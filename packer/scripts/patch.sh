@@ -35,6 +35,7 @@ sudo yum upgrade -y
 echo "Installing Roboshop required tools"
 sudo yum install epel-release -y
 sudo yum install -y make gcc gcc-c++ python3-devel
+sudo yum install net-tools
 
 sudo yum update -y
 sudo yum upgrade -y
