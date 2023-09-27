@@ -18,11 +18,6 @@ pipeline {
                         sh "packer validate ."
                         sh "packer build ."
                     }
-                    // sh '''
-                    // cd packer
-                    // packer validate .
-                    // packer build .
-                    // '''
                 }
             }
         }
