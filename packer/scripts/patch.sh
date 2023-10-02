@@ -2,23 +2,27 @@
 
 sudo yum update -y
 
+############### enabling root login with password::: Jithendar ##########################
 echo "enabling root login with password::: Jithendar"
+
+sudo cat /etc/ssh/sshd_config | grep "PasswordAuthentication no"
 sudo sed -i 's\PasswordAuthentication no\PasswordAuthentication yes\g' /etc/ssh/sshd_config
-sudo cat /etc/ssh/sshd_config | grep "PasswordAuthentication"
+
+sudo cat /etc/ssh/sshd_config | grep "#PermitRootLogin yes"
 sudo sed -i 's\#PermitRootLogin prohibit-password\PermitRootLogin yes\g' /etc/ssh/sshd_config
-sudo cat /etc/ssh/sshd_config | grep "PermitRootLogin"
 
-sudo sed -i 's\disable_root: true\disable_root: false\g' /etc/cloud/cloud.cfg
 sudo cat /etc/cloud/cloud.cfg | grep disable_root
+sudo sed -i 's\disable_root: 1\disable_root: 0\g' /etc/cloud/cloud.cfg
 
-sudo sed -i 's\ssh_pwauth:   false\ssh_pwauth:   true\g' /etc/cloud/cloud.cfg
 sudo cat /etc/cloud/cloud.cfg | grep ssh_pwauth
+sudo sed -i 's\ssh_pwauth:   0\ssh_pwauth:   1\g' /etc/cloud/cloud.cfg
 
 echo "setting root password"
 echo "Jithendar" | sudo passwd --stdin root
 
 sudo systemctl restart sshd
-echo "sshd restarted, root user can login with password"
+echo "enabled root login with password::: Jithendar"
+############### enabling root login with password::: Jithendar ##########################
 
 echo "installing DevTools"
 sudo yum -y install git vim zip jq wget cmake bzip2-devel libffi-devel zlib-devel openssl-devel
@@ -26,8 +30,6 @@ sudo yum -y groupinstall "Development Tools"
 
 echo "installing Python and pip3"
 sudo yum install python3.11 python3-pip
-# curl -O https://bootstrap.pypa.io/get-pip.py
-# python3 get-pip.py --user
 
 sudo yum update -y
 sudo yum upgrade -y
