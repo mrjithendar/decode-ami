@@ -1,12 +1,12 @@
 build {
 
-  sources = ["source.amazon-ebs.amazonLinux2"]
+  sources = ["source.amazon-ebs.centos7"]
 
   provisioner "file" {
     source      = "scripts/patch.sh"
     destination = "/tmp/patch.sh"
   }
-  
+
   provisioner "shell" {
     inline = [
       "id"
@@ -14,7 +14,6 @@ build {
   }
 
   provisioner "shell" {
-    # script = "/tmp/patch.sh"
     inline = [
         "sh /tmp/patch.sh"
         ]
