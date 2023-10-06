@@ -8,7 +8,13 @@ pipeline {
     }
 
     stages {
-
+        stage('Delete existing AMIs') {
+            steps {
+                withAWS(credentials: 'AWSCred', region: "${region}") {
+                    sh "chmod +x mkinv.sh"
+                }
+            }
+        }
         stage('Create Amazon Machine Image') {
             steps {
                 withAWS(credentials: 'AWSCred', region: "${region}") {
