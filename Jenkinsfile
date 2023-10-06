@@ -9,7 +9,7 @@ pipeline {
 
     stages {
 
-        stage('Create AMI with Packer') {
+        stage('Create Amazon Machine Image') {
             steps {
                 withAWS(credentials: 'AWSCred', region: "${region}") {
                     sh "packer --version"
