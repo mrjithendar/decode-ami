@@ -8,14 +8,14 @@ pipeline {
     }
 
     stages {
-        stage('Delete existing AMIs') {
-            steps {
-                withAWS(credentials: 'AWSCred', region: "${region}") {
-                    sh "chmod +x deleteAmi.sh"
-                    sh "sh deleteAmi.sh"
-                }
-            }
-        }
+        // stage('Delete existing AMIs') {
+        //     steps {
+        //         withAWS(credentials: 'AWSCred', region: "${region}") {
+        //             sh "chmod +x deleteAmi.sh"
+        //             sh "sh deleteAmi.sh"
+        //         }
+        //     }
+        // }
         stage('Create Amazon Machine Image') {
             steps {
                 withAWS(credentials: 'AWSCred', region: "${region}") {
