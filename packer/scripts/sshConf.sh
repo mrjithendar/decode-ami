@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ############### enabling root login with password::: Jithendar ##########################
-sudo cat /etc/ssh/sshd_config | grep "PasswordAuthentication no"
-sudo sed -i 's\PasswordAuthentication no\PasswordAuthentication yes\g' /etc/ssh/sshd_config
+sudo cat /etc/ssh/sshd_config | grep "#PasswordAuthentication no"
+sudo sed -i 's\#PasswordAuthentication no\PasswordAuthentication yes\g' /etc/ssh/sshd_config
 sudo cat /etc/ssh/sshd_config | grep "PasswordAuthentication yes"
 
 sudo cat /etc/ssh/sshd_config | grep "#PermitRootLogin yes"
