@@ -3,19 +3,24 @@ build {
   sources = ["source.amazon-ebs.centos7"]
 
   provisioner "file" {
-    source      = "scripts/patch.sh"
-    destination = "/tmp/patch.sh"
+    source      = "scripts/packages.sh"
+    destination = "/tmp/packages.sh"
+  }
+
+  provisioner "file" {
+    source      = "scripts/sshConf.sh"
+    destination = "/tmp/sshConf.sh"
   }
 
   provisioner "shell" {
     inline = [
-      "id"
+      "sh /tmp/sshConf.sh"
     ]
   }
 
   provisioner "shell" {
     inline = [
-        "sh /tmp/patch.sh"
+        "sh /tmp/packages.sh"
         ]
   }
 
