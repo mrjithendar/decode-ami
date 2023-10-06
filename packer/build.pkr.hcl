@@ -18,11 +18,11 @@ build {
     ]
   }
 
-  provisioner "shell" {
-    inline = [
-        "sh /tmp/packages.sh"
-        ]
-  }
+  # provisioner "shell" {
+  #   inline = [
+  #       "sh /tmp/packages.sh"
+  #       ]
+  # }
 
   post-processor "manifest" {
     output     = "manifest.json"
