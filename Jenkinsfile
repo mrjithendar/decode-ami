@@ -11,7 +11,8 @@ pipeline {
         stage('Delete existing AMIs') {
             steps {
                 withAWS(credentials: 'AWSCred', region: "${region}") {
-                    sh "chmod +x mkinv.sh"
+                    sh "chmod +x deleteAmi.sh"
+                    sh "sh deleteAmi.sh"
                 }
             }
         }
