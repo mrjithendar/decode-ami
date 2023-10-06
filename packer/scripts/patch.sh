@@ -30,7 +30,7 @@ sudo yum -y install git vim zip jq wget cmake bzip2-devel libffi-devel zlib-deve
 sudo yum -y groupinstall "Development Tools"
 
 echo "installing Python and pip3"
-sudo yum install python3.11 python3-pip
+sudo yum install -y python3.11 python3-pip
 
 sudo yum update -y
 sudo yum upgrade -y
@@ -38,7 +38,7 @@ sudo yum upgrade -y
 echo "Installing Roboshop required tools"
 sudo yum install epel-release -y
 sudo yum install -y make gcc gcc-c++ python3-devel
-sudo yum install net-tools
+sudo yum install net-tools -y
 
 sudo yum update -y
 sudo yum upgrade -y
