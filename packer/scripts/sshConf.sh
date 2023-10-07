@@ -10,12 +10,12 @@ sudo cat /etc/ssh/sshd_config | grep "PasswordAuthentication yes"
 
 sudo cat /etc/ssh/sshd_config | grep "#PermitRootLogin yes"
 sudo sed -i 's\#PermitRootLogin yes\PermitRootLogin yes\g' /etc/ssh/sshd_config
-echo "enable PermitRootLogin"
+echo "enabled PermitRootLogin"
 sudo cat /etc/ssh/sshd_config | grep "PermitRootLogin yes"
 
 sudo cat /etc/cloud/cloud.cfg | grep "ssh_pwauth:"
-sudo sed -i 's\ssh_pwauth:   1\ssh_pwauth:   0\g' /etc/cloud/cloud.
-echo "enable sshPasswordAuth"
+sudo sed -i 's\ssh_pwauth:   0\ssh_pwauth:   1\g' /etc/cloud/cloud.
+echo "enabled sshPasswordAuth"
 sudo cat /etc/cloud/cloud.cfg | grep "ssh_pwauth:"
 
 sudo cat /etc/cloud/cloud.cfg | grep "disable_root:"
