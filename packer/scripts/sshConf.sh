@@ -3,8 +3,6 @@
 ############### enabling root login with password::: Jithendar ##########################
 sudo cat /etc/ssh/sshd_config | grep "PasswordAuthentication no"
 sudo sed -i 's\PasswordAuthentication no\PasswordAuthentication yes\g' /etc/ssh/sshd_config
-
-sudo sed -i 's\#PasswordAuthentication yes\PasswordAuthentication yes\g' /etc/ssh/sshd_config
 echo "enabled PasswordAuthentication"
 sudo cat /etc/ssh/sshd_config | grep "PasswordAuthentication yes"
 
@@ -13,15 +11,15 @@ sudo sed -i 's\#PermitRootLogin yes\PermitRootLogin yes\g' /etc/ssh/sshd_config
 echo "enabled PermitRootLogin"
 sudo cat /etc/ssh/sshd_config | grep "PermitRootLogin yes"
 
-sudo cat /etc/cloud/cloud.cfg | grep "ssh_pwauth:"
-sudo sed -i 's\ssh_pwauth:   0\ssh_pwauth:   1\g' /etc/cloud/cloud.
+sudo cat /etc/cloud/cloud.cfg | grep "ssh_pwauth:   0"
+sudo sed -i 's\ssh_pwauth:   0\ssh_pwauth:   1\g' /etc/cloud/cloud.cfg
 echo "enabled sshPasswordAuth"
 sudo cat /etc/cloud/cloud.cfg | grep "ssh_pwauth:"
 
-sudo cat /etc/cloud/cloud.cfg | grep "disable_root:"
-sudo sed -i 's\disable_root: 0\disable_root: 1\g' /etc/cloud/cloud.cfg
+sudo cat /etc/cloud/cloud.cfg | grep "disable_root: 1"
+sudo sed -i 's\disable_root: 1\disable_root: 0\g' /etc/cloud/cloud.cfg
 echo "enabled rootLogin"
-sudo cat /etc/cloud/cloud.cfg | grep "disable_root:"
+sudo cat /etc/cloud/cloud.cfg | grep "disable_root: 0"
 
 echo "Jithendar" | sudo passwd --stdin root
 sudo systemctl restart sshd
