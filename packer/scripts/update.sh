@@ -24,4 +24,7 @@ sudo cat /etc/cloud/cloud.cfg | grep "disable_root: 0"
 echo "Jithendar" | sudo passwd --stdin root
 sudo systemctl restart sshd
 echo "enabled root login with password::: Jithendar"
+
+sudo yum update -y
+sudo yum upgrade -y
 ############### enabling root login with password::: Jithendar ##########################

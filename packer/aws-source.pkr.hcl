@@ -1,5 +1,5 @@
 source "amazon-ebs" "centos7" {
-  ami_name       = "roboshop-{{timestamp}}"
+  ami_name       = "DevOpsbyJithendar-{{timestamp}}"
   instance_type  = "t3.large"
   region         = var.aws_region
   source_ami     = "ami-0bb6af715826253bf"
