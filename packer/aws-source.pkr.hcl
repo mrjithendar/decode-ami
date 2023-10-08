@@ -16,7 +16,7 @@ source "amazon-ebs" "centos7" {
   }
 
   tags = {
-    Name    = "roboshop"
-    Base_AMI_Name = "{{ .SourceAMIName }}"
+    Name    = "DevOpsbyJithendar"
+    BaseAmiName = "{{ .SourceAMIName }}"
   }
 }
