@@ -1,6 +1,6 @@
 #!/bin/bash
 
-############### enabling root login with password::: Jithendar ##########################
+####################################################################################################
 sudo cat /etc/ssh/sshd_config | grep "PasswordAuthentication no"
 sudo sed -i 's\PasswordAuthentication no\PasswordAuthentication yes\g' /etc/ssh/sshd_config
 echo "enabled PasswordAuthentication"
@@ -27,4 +27,12 @@ echo "enabled root login with password::: Jithendar"
 
 sudo yum update -y
 sudo yum upgrade -y
-############### enabling root login with password::: Jithendar ##########################
+
+echo "installing DevTools"
+sudo yum install -y openssl-devel bzip2-devel libffi-devel
+sudo yum -y groupinstall "Development Tools"
+sudo wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0a4.tgz
+sudo tar -xzf Python-3.11.0a4.tgz
+cd Python-3.11.0a4
+sudo sh ./configure --enable-optimizations
+sudo make altinstall
