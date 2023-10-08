@@ -8,13 +8,13 @@ build {
   }
 
   provisioner "file" {
-    source      = "scripts/sshConf.sh"
-    destination = "/tmp/sshConf.sh"
+    source      = "scripts/update.sh"
+    destination = "/tmp/update.sh"
   }
 
   provisioner "shell" {
     inline = [
-      "sh /tmp/sshConf.sh"
+      "sh /tmp/update.sh"
     ]
   }
 
