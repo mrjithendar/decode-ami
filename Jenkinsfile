@@ -2,23 +2,20 @@ pipeline {
 
     agent any
 
+    parameters {
+        choice(name: 'AMI', choices: ['AWSCred', 'AWSJithendar'], description: 'Pick AWS Account to Create AMI')
+        }
+
     environment {
         pkrDir = "packer"
         region = "us-east-1"
+        creds = "${params.AMI}"
     }
 
     stages {
-        // stage('Delete existing AMIs') {
-        //     steps {
-        //         withAWS(credentials: 'AWSCred', region: "${region}") {
-        //             sh "chmod +x deleteAmi.sh"
-        //             sh "sh deleteAmi.sh"
-        //         }
-        //     }
-        // }
         stage('Create Amazon Machine Image') {
             steps {
-                withAWS(credentials: 'AWSCred', region: "${region}") {
+                withAWS(credentials: "${creds}", region: "${region}") {
                     sh "packer --version"
                     dir("${pkrDir}") {
                         sh "packer validate ."

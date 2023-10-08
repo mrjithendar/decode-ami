@@ -2,7 +2,7 @@ source "amazon-ebs" "centos7" {
   ami_name       = "roboshop-{{timestamp}}"
   instance_type  = "t3.large"
   region         = var.aws_region
-  source_ami     = "ami-002070d43b0a4f171"
+  source_ami     = "ami-0bb6af715826253bf"
   ssh_port       = 22
   ssh_username   = "centos"
 
