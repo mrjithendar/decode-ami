@@ -1,5 +1,5 @@
-source "amazon-ebs" "centos7" {
-  ami_name       = "DevOpsbyJithendar-{{timestamp}}"
+source "amazon-ebs" "centos8" {
+  ami_name       = "roboshop-7-{{timestamp}}"
   instance_type  = "t3.large"
   region         = var.aws_region
   source_ami     = "ami-0de3437fface34613" #centos8ORG
@@ -16,7 +16,7 @@ source "amazon-ebs" "centos7" {
   }
 
   tags = {
-    Name    = "DevOpsbyJithendar"
+    Name    = "roboshop-8-{{timestamp}}"
     BaseAmiName = "{{ .SourceAMIName }}"
   }
 }
