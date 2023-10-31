@@ -2,7 +2,7 @@ source "amazon-ebs" "centos7" {
   ami_name       = "DevOpsbyJithendar-{{timestamp}}"
   instance_type  = "t3.large"
   region         = var.aws_region
-  source_ami     = "ami-0bb6af715826253bf"
+  source_ami     = "ami-0de3437fface34613" #centos8ORG
   ssh_port       = 22
   ssh_username   = "centos"
 

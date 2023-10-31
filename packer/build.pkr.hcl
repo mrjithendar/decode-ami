@@ -3,26 +3,20 @@ build {
   sources = ["source.amazon-ebs.centos7"]
 
   provisioner "file" {
-    source      = "scripts/packages.sh"
-    destination = "/tmp/packages.sh"
+    source      = "scripts/_ssh_config"
+    destination = "/etc/ssh/ssh_config"
   }
 
   provisioner "file" {
-    source      = "scripts/update.sh"
-    destination = "/tmp/update.sh"
+    source      = "scripts/_ssh.sh"
+    destination = "/tmp/_ssh.sh"
   }
 
   provisioner "shell" {
     inline = [
-      "sh /tmp/update.sh"
+      "sh /tmp/_ssh.sh"
     ]
   }
-
-  # provisioner "shell" {
-  #   inline = [
-  #       "sh /tmp/packages.sh"
-  #       ]
-  # }
 
   post-processor "manifest" {
     output     = "manifest.json"
