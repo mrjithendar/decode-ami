@@ -33,10 +33,8 @@ build {
       "sudo cp -rf /tmp/.ssh /root/",
       "sudo rm -rf /etc/ssh/sshd_config",
       "sudo cp -rf /tmp/sshd_config /etc/ssh/sshd_config",
-      # "sudo sh /tmp/_ssh.sh",
       "sudo echo 'DevOps321' | sudo passwd --stdin root",
       "sudo chmod 700 /root/.ssh",
-      "sudo chmod 600 /root/.ssh/authorized_keys",
       "sudo sudo service sshd restart",
     ]
   }
