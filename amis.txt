@@ -1,3 +1,0 @@
-Roboshop AMI "ami-0bb6af715826253bf" # 
-
-CentOs7 Org: "ami-002070d43b0a4f171"

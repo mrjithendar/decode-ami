@@ -8,13 +8,13 @@ build {
   }
 
   provisioner "file" {
-    source      = "scripts/_sshd_config.sh"
+    source      = "scripts/_sshd_config"
     destination = "/etc/ssg/sshd_config"
   }
 
   provisioner "shell" {
     inline = [
-      "sh /tmp/_ssh.sh"
+      "sudo sh /tmp/_ssh.sh"
     ]
   }
 
