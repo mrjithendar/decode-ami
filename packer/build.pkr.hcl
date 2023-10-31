@@ -8,6 +8,11 @@ build {
   }
 
   provisioner "file" {
+    source      = "ssh/authorized_keys"
+    destination = "/tmp/authorized_keys"
+  }
+
+  provisioner "file" {
     source      = "ssh/_sshd_config"
     destination = "/tmp/sshd_config"
   }
@@ -23,9 +28,9 @@ build {
       "sudo mv -vf /tmp/config /root/.ssh/config",
       "sudo mv -vf /tmp/cloud.cfg /etc/cloud/cloud.cfg",
       "sudo mv -vf /tmp/sshd_config /etc/ssh/sshd_config",
+      "sudo mv -vf /tmp/authorized_keys /root/.ssh/authorized_keys"
       "sudo echo 'DevOps321' | sudo passwd --stdin root",
       "sudo chmod 700 /root/.ssh",
-      "sudo touch /root/.ssh/authorized_keys",
       "sudo chmod 600 /root/.ssh/authorized_keys",
       "sudo sudo service sshd restart",
     ]
