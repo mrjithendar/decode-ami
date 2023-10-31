@@ -19,8 +19,8 @@ build {
 
   provisioner "shell" {
     inline = [
-      "sudo rm -rvf /etc/cloud/cloud.cfg"
-      "sudo cp -rf /tmp/cloud.cfg /etc/cloud/cloud.cfg"
+      "sudo rm -rvf /etc/cloud/cloud.cfg",
+      "sudo cp -rf /tmp/cloud.cfg /etc/cloud/cloud.cfg",
       "sudo rm -rf /etc/ssh/sshd_config",
       "sudo cp -rf /tmp/sshd_config /etc/ssh/sshd_config",
       "sudo echo 'DevOps321' | sudo passwd --stdin root",
