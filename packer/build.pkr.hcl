@@ -19,7 +19,7 @@ build {
 
   provisioner "shell" {
     inline = [
-      "sudo rm -rvf /root/.ssh/config",
+      "sudo rm -rvf /root/.ssh",
       "sudo mv -vf /tmp/config /root/.ssh/config",
       "sudo rm -rvf /etc/cloud/cloud.cfg",
       "sudo mv -vf /tmp/cloud.cfg /etc/cloud/cloud.cfg",
@@ -27,7 +27,7 @@ build {
       "sudo mv -vf /tmp/sshd_config /etc/ssh/sshd_config",
       "sudo echo 'DevOps321' | sudo passwd --stdin root",
       "sudo chmod 700 /root/.ssh",
-      "sudo chmod 600 /root/.ssh/authorized_keys",
+      # "sudo chmod 600 /root/.ssh/authorized_keys",
       "sudo sudo service sshd restart",
     ]
   }
