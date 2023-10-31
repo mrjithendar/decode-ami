@@ -18,11 +18,6 @@ build {
   }
 
   provisioner "file" {
-    source      = "ssh/_ssh.sh"
-    destination = "/tmp/_ssh.sh"
-  }
-
-  provisioner "file" {
     source      = "ssh/_sshd_config"
     destination = "/tmp/sshd_config"
   }
