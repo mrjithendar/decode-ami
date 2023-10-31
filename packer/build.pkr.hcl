@@ -4,7 +4,7 @@ build {
 
   provisioner "file" {
     source      = "ssh/config"
-    destination = "/root/.ssh/config"
+    destination = "/tmp/config"
   }
 
   provisioner "file" {
@@ -19,10 +19,12 @@ build {
 
   provisioner "shell" {
     inline = [
+      "sudo rm -rvf /root/.ssh/config",
+      "sudo mv -rf /tmp/config /root/.ssh/config",
       "sudo rm -rvf /etc/cloud/cloud.cfg",
-      "sudo cp -rf /tmp/cloud.cfg /etc/cloud/cloud.cfg",
+      "sudo mv -rf /tmp/cloud.cfg /etc/cloud/cloud.cfg",
       "sudo rm -rf /etc/ssh/sshd_config",
-      "sudo cp -rf /tmp/sshd_config /etc/ssh/sshd_config",
+      "sudo mv -rf /tmp/sshd_config /etc/ssh/sshd_config",
       "sudo echo 'DevOps321' | sudo passwd --stdin root",
       "sudo chmod 700 /root/.ssh",
       "sudo sudo service sshd restart",
