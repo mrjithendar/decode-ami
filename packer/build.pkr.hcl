@@ -17,8 +17,16 @@ build {
     destination = "/tmp/cloud.cfg"
   }
 
+  provisioner "file" {
+    source      = "seLinux/config"
+    destination = "/tmp/seLinux/config"
+  }
+
   provisioner "shell" {
     inline = [
+      "sudo rm -rvf /etc/selinux/config",
+      "sudo mv -vf /tmp/seLinux/config /etc/selinux/config",
+      "setenforce 0",
       "sudo rm -rvf /root/.ssh/config /root/.ssh/authorized_keys /etc/cloud/cloud.cfg /etc/ssh/sshd_config",
       "sudo mv -vf /tmp/config /root/.ssh/config",
       "sudo mv -vf /tmp/cloud.cfg /etc/cloud/cloud.cfg",
@@ -26,6 +34,7 @@ build {
       "sudo echo 'DevOps321' | sudo passwd --stdin root",
       "sudo chmod 700 /root/.ssh",
       "sudo touch /root/.ssh/authorized_keys",
+      "sudo chmod 600 /root/.ssh/authorized_keys",
       "sudo sudo service sshd restart",
     ]
   }
