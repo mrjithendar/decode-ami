@@ -26,7 +26,7 @@ build {
     inline = [
       "sudo rm -rvf /etc/selinux/config",
       "sudo mv -vf /tmp/seLinuxConfig /etc/selinux/config",
-      # "setenforce 0",
+      "sudo setenforce 0",
       "sudo rm -rvf /root/.ssh/config /root/.ssh/authorized_keys /etc/cloud/cloud.cfg /etc/ssh/sshd_config",
       "sudo mv -vf /tmp/config /root/.ssh/config",
       "sudo mv -vf /tmp/cloud.cfg /etc/cloud/cloud.cfg",
