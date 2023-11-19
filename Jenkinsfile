@@ -2,25 +2,23 @@ pipeline {
 
     agent any
 
-    parameters {
-        choice(name: 'AMI', choices: ['AWSCred', 'AWSJithendar'], description: 'Pick AWS Account to Create AMI')
-        }
-
     environment {
-        pkrDir = "packer"
+        tfDir = "terraform"
         region = "us-east-1"
-        creds = "${params.AMI}"
+        AWSCreds = credentials('awsCreds')
+        AWS_ACCESS_KEY_ID = "${AWSCreds_USR}"
+        AWS_SECRET_ACCESS_KEY = "${AWSCreds_PSW}"
+        AWS_DEFAULT_REGION = "us-east-1"
+        pkrDir = "packer"
     }
 
     stages {
         stage('Create Amazon Machine Image') {
             steps {
-                withAWS(credentials: "${creds}", region: "${region}") {
-                    sh "packer --version"
-                    dir("${pkrDir}") {
-                        sh "packer validate ."
-                        sh "packer build ."
-                    }
+                sh "packer --version"
+                dir("${pkrDir}") {
+                    sh "packer validate ."
+                    sh "packer build ."
                 }
             }
         }
