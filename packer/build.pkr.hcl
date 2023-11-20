@@ -9,13 +9,14 @@ build {
 
   provisioner "file" {
     source      = "ssh/motd"
-    destination = "/etc/motd"
+    destination = "/tmp/_motd"
   }
 
   #ssh config
   provisioner "shell" {
     inline = [
-      "sudo cp /tmp/_config /root/.ssh/config",
+      "sudo cp -f /tmp/_motd /etc/motd",
+      "sudo cp -f /tmp/_config /root/.ssh/config",
       "sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
       "sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
       "sudo echo 'DevOps321' | sudo passwd --stdin root",
