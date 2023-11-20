@@ -4,7 +4,7 @@ build {
 
   provisioner "file" {
     source      = "ssh/config"
-    destination = "/root/.ssh/config"
+    destination = "/tmp/_config"
   }
 
   provisioner "file" {
@@ -15,6 +15,7 @@ build {
   #ssh config
   provisioner "shell" {
     inline = [
+      "sudo cp /tmp/_config /root/.ssh/config",
       "sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
       "sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
       "sudo echo 'DevOps321' | sudo passwd --stdin root",
