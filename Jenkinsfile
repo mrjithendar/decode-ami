@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh "packer --version"
                 dir("${pkrDir}") {
-                    sh "packer init"
+                    sh "packer init -upgrade"
                     sh "packer validate ."
                     sh "packer build ."
                 }
