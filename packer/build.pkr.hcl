@@ -34,6 +34,14 @@ build {
     ]
   }
 
+  #installing required tools
+  provisioner "shell" {
+    inline = [
+      "yum install -y git wget vim net-tools",
+      "yum remove cockpit -y"
+    ]
+  }
+
   post-processor "manifest" {
     output     = "manifest.json"
     strip_path = true
