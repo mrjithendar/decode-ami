@@ -15,11 +15,11 @@ build {
   #ssh config
   provisioner "shell" {
     inline = [
-      "sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config"
-      "sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config"
-      "sudo echo 'DevOps321' | sudo passwd --stdin root"
-      "sudo chown root /root/.ssh/config"
-      "sudo chmod 600 /root/.ssh/config"
+      "sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
+      "sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config",
+      "sudo echo 'DevOps321' | sudo passwd --stdin root",
+      "sudo chown root /root/.ssh/config",
+      "sudo chmod 600 /root/.ssh/config",
       "sudo sudo service sshd restart"
     ]
   }
@@ -27,7 +27,7 @@ build {
   #remove SELinux in centos 8
   provisioner "shell" {
     inline = [
-      "sudo sed -i -e 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config"
+      "sudo sed -i -e 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config",
       "sudo setenforce 0"
     ]
   }
