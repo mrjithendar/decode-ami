@@ -17,18 +17,14 @@ build {
     destination = "/tmp/_ssh.conf"
   }
 
+  provisioner "file" {
+    source      = "ssh/ssh.conf"
+    destination = "/tmp/sshConfig.sh"
+  }
+
   #ssh config
   provisioner "shell" {
-    inline = [
-      "sudo cp -f /tmp/_motd /etc/motd",
-      "sudo cp -f /tmp/_config /root/.ssh/config",
-      "sudo rm -rvf /etc/ssh/sshd_config",
-      "sudo cp -f /tmp/_ssh.conf /etc/ssh/sshd_config",
-      "sudo echo 'DevOps321' | sudo passwd --stdin root",
-      "sudo chown root /root/.ssh/config",
-      "sudo chmod 600 /root/.ssh/config",
-      "sudo sudo service sshd restart"
-    ]
+    inline = [ "sudo sh /tmp/sshConfig.sh" ]
   }
 
   #remove SELinux in centos 8
