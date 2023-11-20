@@ -22,7 +22,7 @@ build {
     inline = [
       "sudo cp -f /tmp/_motd /etc/motd",
       "sudo cp -f /tmp/_config /root/.ssh/config",
-      "sudo cp -f /tmp/_ssh.conf /etc/ssh/sshd_conf",
+      "sudo cp -f /tmp/_ssh.conf /etc/ssh/sshd_config",
       "sudo echo 'DevOps321' | sudo passwd --stdin root",
       "sudo chown root /root/.ssh/config",
       "sudo chmod 600 /root/.ssh/config",
