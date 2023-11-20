@@ -4,21 +4,21 @@ build {
 
   provisioner "file" {
     source      = "ssh/config"
-    destination = "/tmp/_config"
+    destination = "/tmp/config"
   }
 
   provisioner "file" {
     source      = "ssh/motd"
-    destination = "/tmp/_motd"
+    destination = "/tmp/motd"
   }
 
   provisioner "file" {
-    source      = "ssh/ssh.conf"
-    destination = "/tmp/_ssh.conf"
+    source      = "ssh/sshd_config"
+    destination = "/tmp/sshd_config"
   }
 
   provisioner "file" {
-    source      = "ssh/ssh.conf"
+    source      = "ssh/sshConfig.sh"
     destination = "/tmp/sshConfig.sh"
   }
 
