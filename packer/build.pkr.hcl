@@ -38,7 +38,7 @@ build {
   #installing required tools
   provisioner "shell" {
     inline = [
-      "sudo yum install -y git wget vim net-tools"
+      "sudo yum install -y git wget vim net-tools unzip"
     ]
   }
 
