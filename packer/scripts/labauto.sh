@@ -4,13 +4,13 @@ curl -s "https://raw.githubusercontent.com/linuxautomations/scripts/master/commo
 #source /root/scripts/common-functions.sh
 source /tmp/common-functions.sh
 ## Checking Root User or not.
-CheckRoot
+#CheckRoot
 
 ## Checking SELINUX Enabled or not.
-CheckSELinux
+#CheckSELinux
 
 ## Checking Firewall on the Server.
-CheckFirewall &>/dev/null
+#CheckFirewall &>/dev/null
 
 ## Supported OS's
 # CentOS 7
