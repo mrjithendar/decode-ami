@@ -11,7 +11,6 @@ sed -i -e 's/ssh_pwauth:   false/ssh_pwauth:   true/g' /etc/cloud/cloud.cfg
 
 echo "updated root and centos user password to::: DevOps321"
 sudo echo 'DevOps321' | sudo passwd --stdin root
-sudo echo 'DevOps321' | sudo passwd --stdin centos
 
 echo "updating /root/.ssh/config permissions"
 sudo chown root /root/.ssh/config
