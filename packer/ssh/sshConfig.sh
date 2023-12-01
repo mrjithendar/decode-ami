@@ -19,12 +19,3 @@ sudo chmod 600 /root/.ssh/config
 
 echo "restarting SSHD service"
 sudo sudo service sshd restart
-
-#Brew
-sudo yum groupinstall 'Development Tools'
-sudo yum install procps-ng curl file git
-echo "DevOps321" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" -S
-(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/centos/.bashrc
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-brew install gcc
-echo "brew installed successfully"

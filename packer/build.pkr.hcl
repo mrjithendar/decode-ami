@@ -13,11 +13,6 @@ build {
   }
 
   provisioner "file" {
-    source      = "ssh/sshd_config"
-    destination = "/tmp/sshd_config"
-  }
-
-  provisioner "file" {
     source      = "ssh/sshConfig.sh"
     destination = "/tmp/sshConfig.sh"
   }
