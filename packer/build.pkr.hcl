@@ -42,8 +42,7 @@ build {
     inline = [
       "sudo git clone https://github.com/mrjithendar/tools.git",
       "sudo mv tools /tmp/tools",
-      "sudo ln tools/setup.sh /usr/bin/labauto",
-      "sudo ln tools/setup.sh /usr/bin/labauto", #creates hardlink if put -s creates symlink
+      "sudo ln /tmp/tools/setup.sh /usr/bin/labauto", #creates hardlink if put -s creates symlink
       "sudo chmod +x /usr/bin/labauto"
     ]
   }
