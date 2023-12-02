@@ -37,6 +37,17 @@ build {
     ]
   }
 
+  #installing required tools
+  provisioner "shell" {
+    inline = [
+      "git clone https://github.com/mrjithendar/tools.git",
+      "mv toos /tmp/tools",
+      "ln tools/setup.sh /usr/bin/labauto",
+      "ln tools/setup.sh /usr/bin/labauto", #creates hardlink if put -s creates symlink
+      "chmod +x /usr/bin/labauto"
+    ]
+  }
+
   post-processor "manifest" {
     output     = "manifest.json"
     strip_path = true
